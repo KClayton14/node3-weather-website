@@ -4,6 +4,11 @@ const hbs = require('hbs')
 
 const app = express()
 
+//Value of port is going to be provided by Heroku, so use "or" operator incase the value is not set by Heroku.
+//In such a case, we will use localport 3000
+
+const port = process.env.PORT || 3000
+
 console.log('changes')
 
 // Define paths for Express config
@@ -64,6 +69,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(5000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port' + port)
 })
